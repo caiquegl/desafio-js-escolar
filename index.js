@@ -4,7 +4,7 @@ let alunos = [{ nome: "caique", curso: "fullstack", faltas: [0], notas: [] },
 
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-function adicionarAluno(nome) {
+adicionarAluno = nome => {
     if (typeof nome == "string") {
         alunos.push({
             nome: nome,
@@ -20,7 +20,7 @@ function adicionarAluno(nome) {
 
 
 
-function buscarAluno(aluno) {
+buscarAluno = aluno => {
 
     return alunos.filter(buscar => {
         return buscar.nome == aluno;
@@ -28,7 +28,7 @@ function buscarAluno(aluno) {
 
 }
 
-function matricular({ nome, curso }, cursoMatricular) {
+matricular = ({nome, curso }, cursoMatricular) => {
 
     if (curso.length > 0) {
 
@@ -45,7 +45,7 @@ function matricular({ nome, curso }, cursoMatricular) {
 };
 
 
-function aplicarFalta({nome, curso, faltas}, falta) {
+aplicarFalta = ({nome, curso, faltas}, falta) => {
 
     if(curso.length = 0){
         console.log("Aluno não está matriculado ainda");
@@ -62,7 +62,7 @@ function aplicarFalta({nome, curso, faltas}, falta) {
     }
 }
 
-function aplicarNota({nome, curso, notas}, nota){
+aplicarNota = ({nome, curso, notas}, nota) => {
 
     if(curso.length = 0){
 
@@ -77,7 +77,7 @@ function aplicarNota({nome, curso, notas}, nota){
 
 }
 
-function aprovarAluno({nome, notas, faltas, curso}){
+aprovarAluno = ({nome, notas, faltas, curso}) => {
 
 let soma = notas.reduce(reducer) ;
 
@@ -92,7 +92,7 @@ if(faltas < 4 && aprovando >= 7){
 
 }
 
-function listarAlunos() {
+listarAlunos = () => {
     console.log(`Lista de alunos`)
     for (let i = 0; i < alunos.length; i++) {
 
@@ -116,8 +116,8 @@ aplicarFalta(alunos[0], 3);
 aplicarNota(alunos[0], 10);
 aplicarNota(alunos[0], 6);
 
-// aprovarAluno(alunos[0]);
+aprovarAluno(alunos[0]);
 
 
-// listarAlunos();
-console.log(buscarAluno("Nayara"));
+listarAlunos();
+// console.log(buscarAluno("caique"));
